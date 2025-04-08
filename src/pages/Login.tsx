@@ -6,13 +6,13 @@ export function Login(){
             <div className="square">
             <form>
                 <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="text" id="email" className="emailForm" />
+                <label>Email</label>
+                <input type="text" placeholder="Email" className="emailForm" />
                 </div>
                 <br />
                 <div className="form-group">
-                <label htmlFor="senha">Senha</label>
-                <input type="text" id="senha" className="emailForm" />
+                <label>Senha</label>
+                <input type="password" placeholder="Senha" className="emailForm" />
                 </div>
                 <button type="submit" className="btLogin">Entrar</button>
             </form>
