@@ -4,18 +4,18 @@ export function Login(){
         <section className="page">
             <h2 className="page-title">Faça seu Login</h2>
             <div className="square">
-                <div className="emailForm">
+            <form>
+                <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <br />
-                <input type="text" id="email" />
+                <input type="text" id="email" className="emailForm" />
                 </div>
                 <br />
-                <div className="senhaform">
+                <div className="form-group">
                 <label htmlFor="senha">Senha</label>
-                <br />
-                <input type="text" id="senha" />
+                <input type="text" id="senha" className="emailForm" />
                 </div>
-                <button className="btLogin">Enviar</button>
+                <button type="submit" className="btLogin">Entrar</button>
+            </form>
             </div>
         </section>
     )
