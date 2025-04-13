@@ -11,19 +11,21 @@ import { Registro } from './pages/Registro';
 
 function App() {
   return (
-    <Router>
-      <Header/>
-      <Nav/>
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Registro" element={<Registro />}/>
-        </Routes>
-      </main>
-      <Footer />
+    <div className="app-container">
+      <Router>
+        <Header />
+        <Nav />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Registro" element={<Registro />} />
+          </Routes>
+        </main>
+        <Footer />
       </Router>
+    </div>
   );
 }
 
