@@ -1,3 +1,5 @@
+import "./Footer.css"
+
 // Components/Footer.tsx
 export function Footer(){
     return(

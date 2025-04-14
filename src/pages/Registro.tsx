@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
-import { Modal } from '../components/Modal';
+import Modal from '../components/Modal';
 
-export function Registro() {
-  const [showModal, setShowModal] = useState(false);
+export function Registro(){
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const[modoModal, setModoModal]= useState<"novo" | "editar"|"excluir">("novo");
+  const abrirModalNovo =()=>{
+    setModoModal("novo");
+    setIsModalOpen(true);
+  }
+  const abrirModalEditar =() => {
+    setModoModal("editar");
+    setIsModalOpen(true);
+  }
+  const abrirModalExcluir=()=>{
+    setModoModal("excluir");
+    setIsModalOpen(true);
+  }
+
 
   return (
     <section className="page">
@@ -31,7 +45,8 @@ export function Registro() {
             <td>14:00</td>
             <td>200,00</td>
             <td>Pago</td>
-            <td><a href="#">Editar</a> | <a href="#">Deletar</a></td>
+            <td><button id = "btedit" onClick={abrirModalEditar}> Editar</button>
+            <button id = "btdel" onClick ={abrirModalExcluir}>Deletar</button></td>
           </tr>
 
           <tr>
@@ -41,7 +56,8 @@ export function Registro() {
             <td>12:23</td>
             <td>1500,00</td>
             <td>Recebido</td>
-            <td><a href="#">Editar</a> | <a href="#">Deletar</a></td>
+            <td><button id = "btedit"onClick={abrirModalEditar}> Editar</button>
+            <button id = "btdel" onClick ={abrirModalExcluir}>Deletar</button></td>
           </tr>
 
           <tr>
@@ -51,7 +67,8 @@ export function Registro() {
             <td>10:30</td>
             <td>750,00</td>
             <td>Pago</td>
-            <td><a href="#">Editar</a> | <a href="#">Deletar</a></td>
+            <td><button id = "btedit" onClick={abrirModalEditar}> Editar</button>
+            <button id = "btdel" onClick ={abrirModalExcluir}>Deletar</button></td>
           </tr>
 
           <tr>
@@ -61,7 +78,8 @@ export function Registro() {
             <td>9:45</td>
             <td>650,00</td>
             <td>Recebido</td>
-            <td><a href="#">Editar</a> | <a href="#">Deletar</a></td>
+            <td><button id = "btedit" onClick={abrirModalEditar}> Editar</button>
+            <button id = "btdel" onClick ={abrirModalExcluir}>Deletar</button></td>
           </tr>
 
           <tr>
@@ -71,7 +89,8 @@ export function Registro() {
             <td>15:27</td>
             <td>1345,23</td>
             <td>Pago</td>
-            <td><a href="#">Editar</a> | <a href="#">Deletar</a></td>
+            <td><button id = "btedit" onClick={abrirModalEditar}> Editar</button>
+            <button id = "btdel" onClick ={abrirModalExcluir}>Deletar</button></td>
           </tr>
 
           <tr>
@@ -81,7 +100,8 @@ export function Registro() {
             <td>12:30</td>
             <td>850,00</td>
             <td>Pago</td>
-            <td><a href="#">Editar</a> | <a href="#">Deletar</a></td>
+            <td><button id = "btedit" onClick={abrirModalEditar}> Editar</button>
+            <button id = "btdel" onClick ={abrirModalExcluir}>Deletar</button></td>
           </tr>
         </tbody>
       </table>
@@ -100,13 +120,46 @@ export function Registro() {
           <label>Saldo</label>
           <input type="number" placeholder="945,42" />
         </div>
-        <button className="novo-lancamento" onClick={() => setShowModal(true)}>
-          Novo lançamento
-        </button>
+        <button className="novo-lancamento"  onClick={abrirModalNovo}>Novo lançamento</button>
       </div>
 
       {/* Modal */}
-      <Modal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <Modal isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+    titulo={
+      modoModal === "novo" ? "Novo lançamento" : modoModal=== "editar" ? "Editar":  "Excluir"}
+    >
+      {modoModal==="excluir" ? (
+        <div style={{textAlign:"center"}}> <p>Você tem certeza que deseja excluir esse registro?</p></div>
+      ): (
+        <form>
+          <div>
+            <label>Descrição</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label>Data</label>
+            <input type="date" />
+          </div>
+          <div>
+            <label>Hora</label>
+            <input type="time" />
+          </div>
+          <div>
+            <label>Valor</label>
+            <input type="number" />
+          </div>
+          <div>
+            <label>
+              <input type="radio" name="tipo" value="Pago" /> Pago
+            </label>
+            <label>
+              <input type="radio" name="tipo" value="Recebido" /> Recebido
+            </label>
+          </div>
+        </form>
+      )}
+      </Modal>
     </section>
   );
 }

@@ -1,0 +1,15 @@
+.logo-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo-fixed svg {
+    width: 40px;
+    height: 40px;
+}
